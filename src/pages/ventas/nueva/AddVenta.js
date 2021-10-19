@@ -11,7 +11,7 @@ import Tabs from 'devextreme-react/tabs';
 import apiCategoria from 'src/services/api/tasks/ApiCategoria';
 import useSide from 'src/services/context/sidebarShow';
 import useCarrito from 'src/services/context/carrito';
-import NanoItem from '../../../views/admin/NanoItem';
+import NanoItem from '../../../components/NanoItem';
 import Selecionado from '../../../views/admin/Selecionado';
 import Paginator from 'src/common/Paginator';
 

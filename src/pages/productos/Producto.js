@@ -8,7 +8,7 @@ import api from 'src/services/api/tasks/ApiProducto';
 
 //otros
 import { Avatar } from 'primereact/avatar';
-import FormProducto from 'src/forms/FormProducto';
+import FormProducto from 'src/components/forms/FormProducto';
 
 const Producto = () => {
 

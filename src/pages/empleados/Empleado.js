@@ -7,7 +7,7 @@ import EditionLayout, { itemDialog, itemTool }  from 'src/layouts/admin/EditionL
 import api from 'src/services/api/tasks/ApiFactura';
 
 //
-import FormEmpleado from 'src/forms/FormEmpleado';
+import FormEmpleado from 'src/components/forms/FormEmpleado';
 
 const Empleado = () => {
     const columns = [

@@ -7,7 +7,7 @@ import EditionLayout, { itemDialog, itemTool }  from 'src/layouts/admin/EditionL
 import api from 'src/services/api/tasks/ApiFactura';
 
 //
-import FormCaja from 'src/forms/FormCaja';
+import FormCaja from 'src/components/forms/FormCaja';
 
 const Caja = () => {
     const columns = [

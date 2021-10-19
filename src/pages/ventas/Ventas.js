@@ -8,7 +8,7 @@ import api from 'src/services/api/tasks/ApiFactura';
 
 //
 import { Badge } from 'primereact/badge';
-import FormCaja from 'src/forms/FormCaja';
+import FormCaja from 'src/components/forms/FormCaja';
 import Detalle from "./Detalle";
 
 const Ventas = () => {
