@@ -1,29 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import { useHistory } from "react-router-dom";
 import { Column, MasterDetail } from 'devextreme-react/data-grid';
 
-import EditionLayout, { itemDialog, itemTool }  from 'src/layouts/admin/EditionLayout';
-import api from 'src/services/api/tasks/ApiFactura';
-
-//
-import FormProveedor from 'src/components/forms/FormProveedor';
+import PageCard from 'src/common/PageCard';
+import Form from 'src/components/forms/FormProveedor';
+import api from 'src/services/api/tasks/ApiProveedor';
+import PageTable, { itemDialog, itemTool } from 'src/components/tables/PageTable';
 
 const Proveedor = () => {
+    const { data, isLoading, isError} = api.obtener();
+    const [selected, setSelected] = useState({})
 
     const tools = [
-        itemDialog("Agregar", "add", FormProveedor, "Agregar Proveedor", "post", "ProveedorId"),
-        itemDialog("Editar", "edit", FormProveedor, "Editar Proveedor", "put", "ProveedorId"),
-        itemDialog("Eliminar", "trash", FormProveedor, "Eliminar Proveedor", "delete", "ProveedorId"),
-    ];
+        itemDialog("Agregar", "add", Form, "Agregar Proveedor", "post", "proveedorId"),
+        itemDialog("Editar", "edit", Form, "Editar Proveedor", "put", "proveedorId", selected),
+        itemDialog("Eliminar", "trash", Form, "Eliminar Proveedor", "delete", "proveedorId", selected),
+    ]
 
-    return ( 
-        <EditionLayout
+    return (
+        <PageCard
+            icon="pi-user"
             titulo = "Gestión de Proveedor"
             subTitulo = "Listado de Proveedor"
-            dataSource = {api.obtenerProveedor}
-            keyExpr = "proveedorId"
-            columns = {[
+            isLoading={isLoading}
+            isError={isError}
+        >
+            <PageTable
+                data={data}
+                tools={tools}
+                isLoading={isLoading}
+                setSelect={setSelected}
+            >
                 <Column dataField="proveedorId"  key="proveedorId" width={100}/>, 
                 <Column dataField="empresa"  key="empresa" width={150}/>, 
                 <Column dataField="contacto"  key="contacto" width={130}/>, 
@@ -32,11 +39,8 @@ const Proveedor = () => {
                 <Column dataField="celular"  key="celular" width={90}/>, 
                 <Column dataField="foto"  key="foto" width={75}/>, 
                 <Column dataField="lotes"  key="lotes" width={75}/>, 
-            ]}
-            tools = {tools}
-            icon = "pi-user"
-        />
+            </PageTable>
+        </PageCard>
     );
 }
- 
 export default Proveedor;

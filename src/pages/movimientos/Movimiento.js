@@ -1,26 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import { useHistory } from "react-router-dom";
 import { Column, MasterDetail } from 'devextreme-react/data-grid';
 
-import EditionLayout, { itemDialog, itemTool }  from 'src/layouts/admin/EditionLayout';
-import api from 'src/services/api/tasks/ApiFactura';
-
-//
+import PageCard from 'src/common/PageCard';
+import Form from 'src/components/forms/FormMovimiento';
+import api from 'src/services/api/tasks/ApiMovimiento';
+import PageTable, { itemDialog, itemTool } from 'src/components/tables/PageTable';
 
 const Movimiento = () => {
-    const tools = [
-    
-    ];
+    const { data, isLoading, isError} = api.obtener();
+    const [selected, setSelected] = useState({})
 
-    return ( 
-        <EditionLayout
+    const tools = [
+        itemDialog("Agregar", "add", Form, "Agregar Movimiento", "post", "movimientoId"),
+        itemDialog("Editar", "edit", Form, "Editar Movimiento", "put", "movimientoId", selected),
+        itemDialog("Eliminar", "trash", Form, "Eliminar Movimiento", "delete", "movimientoId", selected),
+    ]
+
+    return (
+        <PageCard
+            icon="pi-book"
             titulo = "Gestión de Movimiento"
             subTitulo = "Listado de Movimiento"
-            dataSource = {api.obtenerMovimiento}
-            keyExpr = "movimientoId"
-            icon = "pi-book"
-            columns = {[
+            isLoading={isLoading}
+            isError={isError}
+        >
+            <PageTable
+                data={data}
+                tools={tools}
+                isLoading={isLoading}
+                setSelect={setSelected}
+            >
                 <Column dataField="movimientoId"  key="movimientoId" width={105}/>, 
                 <Column dataField="empleadoId"  key="empleadoId" width={95}/>, 
                 <Column dataField="MovimientoId"  key="MovimientoId" width={75}/>, 
@@ -35,9 +45,8 @@ const Movimiento = () => {
                 <Column dataField="empleado"  key="empleado" width={75}/>, 
                 <Column dataField="contables"  key="contables" width={75}/>, 
                 <Column dataField="inventarios"  key="inventarios" width={75}/>,
-            ]}
-            tools = {tools}
-        />
+            </PageTable>
+        </PageCard>
     );
 }
  

@@ -4,10 +4,10 @@ import { useAuthHeader } from 'react-auth-kit';
 
 import withAxios from '../utilities/provider';
 
-const axiosQuery = (method, url, queryKey) => () => {
+const axiosQuery = (method, url, queryKey) => (urlParams = "") => {
     const authHeader = useAuthHeader()();
 
-    const axios = withAxios(method, url, authHeader)
+    const axios = withAxios(method, url + urlParams, authHeader)
     return useQuery(queryKey, axios)
 }
 
@@ -25,15 +25,14 @@ const axiosMutator = (method, url, queryKey) => () =>{
     })
 }
 
-
 const axiosPaginator = (method, url, queryKey) => (page) => {
     const authHeader = useAuthHeader()();
     const axios = withAxios(method, url, authHeader)
-    //return useQuery(queryKey, axios)
 
-    return useQuery([queryKey, page], axios,
-    { keepPreviousData: true, staleTime: 5000 }
-)
+    return useQuery([queryKey, page], axios, { 
+        keepPreviousData: true, 
+        staleTime: 5000 
+    });
 }
 
 

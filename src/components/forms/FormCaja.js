@@ -1,26 +1,20 @@
 import React from 'react'
-import FormDialog from 'src/components/FormDialog';
+import FormDialog from 'src/common/FormDialog';
 import {SimpleItem, GroupItem} from 'devextreme-react/form';
 
 import NiceModal from '@ebay/nice-modal-react';
 
-//
-import ctxSelected from 'src/services/context/ctxSelected';
-
-const FormCaja = NiceModal.create( ({title, method}) =>{
-    const {data: json} = ctxSelected();
+const FormCaja = NiceModal.create( ({title, method, data: source, queryKey}) =>{
 
     const callback = (data) =>{
         console.log(data);
     }
 
-    console.log(json);
-
     return (
         <FormDialog
             title= {title}
             callback= {callback}
-            data = {json}
+            data = {source}
         >
             <GroupItem cssClass="first-group">
                 <SimpleItem dataField="CajaId"

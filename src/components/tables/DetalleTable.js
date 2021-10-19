@@ -1,11 +1,14 @@
 import React from 'react';
 
 import DataGrid, { Scrolling } from 'devextreme-react/data-grid';
+import api from 'src/services/api/tasks/ApiFactura';
 
 
-const Detalle = ({data}) => {
+const DetalleTable = ({data}) => {
     const {data : parentData } = data;
-    const { cliente, detalles: source} = parentData;
+    const { cliente, facturaId} = parentData;
+
+    const { data: source, isLoading, isError } = api.obtenerDetalle("?facturaId="+ facturaId);
 
     console.log(cliente, source);
     
@@ -18,7 +21,7 @@ const Detalle = ({data}) => {
                 style = {{maxHeight : "20rem"}}
                 keyExpr = {"detalleId"}
                 showBorders={true}
-                dataSource = {source}
+                dataSource = {source?.data}
                 columnAutoWidth={true}
                 hoverStateEnabled={true}
                 focusedRowEnabled={true}
@@ -26,6 +29,7 @@ const Detalle = ({data}) => {
                 columnHidingEnabled={true}
                 allowColumnReordering={true}
                 selection={{ mode: 'single' }}
+                noDataText={(isLoading) ? "Cargando...": "Error o no hay datos"}
             >
                 <Scrolling mode="virtual" />
                 
@@ -34,4 +38,4 @@ const Detalle = ({data}) => {
     );
 }
  
-export default Detalle;
+export default DetalleTable;

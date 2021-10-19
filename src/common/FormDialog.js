@@ -22,8 +22,8 @@ const FormDialog = ({title, callback, children, data = {}}) => {
             centered>
             
         
-            <div class="modal-header" style={{display: 'none'}}>
-                <h5 class="modal-title">{title}</h5>
+            <div className="modal-header" style={{display: 'none'}}>
+                <h5 className="modal-title">{title}</h5>
                 <Button
                     icon="close"
                     type="normal"
@@ -32,8 +32,8 @@ const FormDialog = ({title, callback, children, data = {}}) => {
                 />
             </div>
 
-            <div class="modal-header xtreme">
-                <h5 class="modal-title">{title}</h5>
+            <div className="modal-header xtreme">
+                <h5 className="modal-title">{title}</h5>
                 <Button
                     icon="close"
                     type="normal"

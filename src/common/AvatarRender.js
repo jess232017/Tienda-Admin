@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const AvatarRender = (image, setImage) => {
+const AvatarRender = (image="https://st3.depositphotos.com/5532432/17941/v/450/depositphotos_179410138-stock-illustration-ceo-flat-vector-icon.jpg", setImage) => {
     //const [image, setImage] = useState("https://st3.depositphotos.com/5532432/17941/v/450/depositphotos_179410138-stock-illustration-ceo-flat-vector-icon.jpg");
     const [selected, setSelected] = useState(false);
     const [name, setName] = useState("");

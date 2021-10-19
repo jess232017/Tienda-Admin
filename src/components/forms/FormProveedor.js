@@ -1,10 +1,10 @@
 import React from 'react'
-import FormDialog from 'src/components/FormDialog';
+import FormDialog from 'src/common/FormDialog';
 import {SimpleItem, GroupItem} from 'devextreme-react/form';
 
 import NiceModal from '@ebay/nice-modal-react';
 
-const FormProveedor = NiceModal.create( ({title, method}) =>{
+const FormProveedor = NiceModal.create( ({title, method, data: source, queryKey}) =>{
     const callback = (data) =>{
         console.log(data);
     }

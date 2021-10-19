@@ -12,7 +12,7 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import './scss/style.scss';
 
-const TheLayout = React.lazy(() => import('./layouts/containers/TheLayout'))
+const TheLayout = React.lazy(() => import('./components/layouts/containers/TheLayout'))
 const Auth = React.lazy(() => import('./pages/auth/Auth'));
 
 const App = () => {

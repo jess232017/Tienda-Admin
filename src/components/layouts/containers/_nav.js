@@ -7,7 +7,7 @@ const _nav =  [
     _tag: 'CSidebarNavItem',
     name: 'Panel de datos',
     to: '/dashboard',
-    icon: <i className="pi pi-microsoft c-sidebar-nav-icon"></i>,
+    icon: <i className="pi pi-th-large c-sidebar-nav-icon"></i>,
     badge: {
       color: 'info',
       text: 'NEW',
@@ -20,6 +20,26 @@ const _nav =  [
     icon: <i className="pi pi-shopping-cart c-sidebar-nav-icon"></i>,
   },
   {
+    _tag: 'CSidebarNavDropdown',
+    name: 'Productos',
+    route: '/pages',
+    icon: <i className="pi pi-briefcase c-sidebar-nav-icon"></i>,
+    _children: [
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Productos',
+        to: '/admin/producto',
+       // icon: <i className="pi pi-user c-sidebar-nav-icon"></i>,
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Categorias',
+        to: '/admin/categoria',
+       // icon: <i className="pi pi-tag c-sidebar-nav-icon"></i>,
+      },
+    ],
+  },
+  {
     _tag: 'CSidebarNavItem',
     name: 'Inventarios',
     to: '/admin/inventario',
@@ -30,12 +50,6 @@ const _nav =  [
     name: 'Bitacoras',
     to: '/admin/movimiento',
     icon: <i className="pi pi-book c-sidebar-nav-icon"></i>,
-  },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Productos',
-    to: '/admin/producto',
-    icon: <i className="pi pi-tag c-sidebar-nav-icon"></i>,
   },
   {
     _tag: 'CSidebarNavItem',

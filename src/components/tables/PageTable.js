@@ -2,23 +2,19 @@ import React from 'react';
 
 import DataGrid, {
     Pager,
-    Paging,
-    Editing,
-    Grouping,
-    FilterRow,
-    GroupPanel,
-    SearchPanel,
-    ColumnChooser } from 'devextreme-react/data-grid';
+    Paging, Editing,
+    Grouping, FilterRow,
+    GroupPanel, SearchPanel, ColumnChooser } from 'devextreme-react/data-grid';
+    
+import { show } from '@ebay/nice-modal-react';
 
 const PageTable = ({tools, data, isLoading, setSelect, children}) => {
     const onToolbarPreparing = (e) =>{
-        const toolbarItems = e.toolbarOptions.items;
-        toolbarItems.unshift(...tools);
+        e.toolbarOptions.items.unshift(...tools);
     }
 
     const onSelectionChanged = ({ selectedRowsData }) =>{
-        const data = selectedRowsData[0];
-        setSelect(data);
+        setSelect(selectedRowsData[0]);
     }
 
     return ( 
@@ -60,7 +56,7 @@ const PageTable = ({tools, data, isLoading, setSelect, children}) => {
                 showInfo={false}
                 showNavigationButtons={true}
                 showPageSizeSelector={true}
-                visible={false}/>
+                visible={true}/>
 
             <Paging 
                 defaultPageSize={8} />
@@ -70,4 +66,33 @@ const PageTable = ({tools, data, isLoading, setSelect, children}) => {
     );
 }
  
+const itemDialog = (text, icon, Template, title, method, queryKey, data) => ({
+    location: "before",
+    widget: "dxButton",
+    locateInMenu: "auto",
+    options:{
+        icon,
+        text,
+        type:"default",
+        stylingMode: "outlined",
+        onClick: () => show(Template, {title, method, data, queryKey}),
+    }
+});
+
+const itemTool = ( text, icon, onClick ) => {
+    return {
+        location: "before",
+        widget: "dxButton",
+        locateInMenu: "auto",
+        options:{
+            icon,
+            text,
+            onClick,
+            type:"default",
+            stylingMode: "outlined"
+        }
+    }
+}
+
+export {itemDialog, itemTool};
 export default PageTable;

@@ -4,7 +4,7 @@ import { Avatar } from 'primereact/avatar';
 import { Button } from 'devextreme-react/button';
 import { NumberBox } from 'devextreme-react/number-box';
 
-import Truncable from 'src/components/string_truncate/Truncable';
+import Truncable from 'src/components/widgets/string_truncate/Truncable';
 
 const NanoItem = ({productoId, descripcion, Cantidad, imagen, precioVenta}, carritoStore) => {
     const {carrito ,addItem, editItem, removeItem}  = carritoStore;

@@ -1,11 +1,11 @@
 import React from 'react'
-import FormDialog from 'src/components/FormDialog';
+import FormDialog from 'src/common/FormDialog';
 import {SimpleItem, GroupItem} from 'devextreme-react/form';
 import {EmailRule, RequiredRule, AsyncRule, } from 'devextreme-react/form';
 
 import NiceModal from '@ebay/nice-modal-react';
 
-const FormEmpleado = NiceModal.create( ({title, method}) =>{
+const FormEmpleado = NiceModal.create( ({title, method, data: source, queryKey}) =>{
     const callback = (data) =>{
         console.log(data);
     }
@@ -18,22 +18,22 @@ const FormEmpleado = NiceModal.create( ({title, method}) =>{
             <GroupItem cssClass="first-group" colCount={4}>
                 <GroupItem colSpan={3}>
                     <SimpleItem isRequired
-                        dataField="Nombre">
+                        dataField="nombre">
                     </SimpleItem>
                     <SimpleItem isRequired
-                        dataField="Apellido" />
+                        dataField="apellido" />
                     <SimpleItem isRequired
-                        dataField="Tienda"
+                        dataField="tienda"
                         editorType="dxSelectBox" />
                     <SimpleItem isRequired
-                        dataField="Rol"
+                        dataField="rol"
                         editorType="dxSelectBox" />
                 </GroupItem>
 
                 <GroupItem>
                     <SimpleItem isRequired/>
                     <SimpleItem isRequired
-                        dataField="EmpleadoId" 
+                        dataField="empleadoId" 
                         editorOptions={{ disabled: true }}
                     />
                 </GroupItem>
@@ -44,13 +44,13 @@ const FormEmpleado = NiceModal.create( ({title, method}) =>{
                 colCount={2}>
 
                 <SimpleItem isRequired
-                    dataField="Usuario" />
+                    dataField="usuario" />
 
                 <SimpleItem isRequired
-                    dataField="Estado" />
+                    dataField="estado" />
 
                 <SimpleItem
-                    dataField="Correo"
+                    dataField="correo"
                     editorType="dxTextBox">
                     <RequiredRule message="Se requiere completar este campo" />
                     <EmailRule message="El correo no es valido" />
@@ -60,7 +60,7 @@ const FormEmpleado = NiceModal.create( ({title, method}) =>{
                 </SimpleItem>
                 
                 <SimpleItem isRequired
-                    dataField="Clave"/>
+                    dataField="clave"/>
             
             </GroupItem>
         </FormDialog>

@@ -4,7 +4,7 @@ import {SimpleItem, GroupItem} from 'devextreme-react/form';
 
 import NiceModal from '@ebay/nice-modal-react';
 
-const FormInventario = NiceModal.create( ({title, method, data: source, queryKey}) =>{
+const FormMovimiento = NiceModal.create( ({title, method, data: source, queryKey}) =>{
     const callback = (data) =>{
         console.log(data);
     }
@@ -61,4 +61,4 @@ const FormInventario = NiceModal.create( ({title, method, data: source, queryKey
     )
 });
 
-export default FormInventario;
+export default FormMovimiento;

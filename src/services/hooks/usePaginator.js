@@ -58,8 +58,6 @@ function usePaginator(method, url, queryKey) {
                     />
                 </div>
             </div>
-        
-            
         </div>
     );
 

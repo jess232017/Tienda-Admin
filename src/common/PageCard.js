@@ -7,7 +7,7 @@ const PageCard = ({icon, titulo, subTitulo, isLoading, isError, children}) => {
         <div className="card">
             <div className="card-header">
                 <div className="card-title">
-                    <i className={`pi ${ icon ?? "pi-table"} p-mr-2`}></i>
+                    <i className={`pi ${ icon ?? "pi-th-large"} p-mr-2`}></i>
                     {titulo}
                 </div>
                 <div className="mb-0 card-subtitle">{(isLoading ? "Cargando..." : subTitulo)}</div>
