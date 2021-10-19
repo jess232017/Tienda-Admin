@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useAuthHeader } from 'react-auth-kit';
 import { useQuery, useQueryClient } from 'react-query';
 import withAxios from 'src/services/api/utilities/provider';
-import Pagination from '@atlaskit/pagination';
+import ReactPaginate from 'react-paginate';
+
 
 const availableSize = [5, 8, 15, 30];
 
@@ -50,10 +51,10 @@ function usePaginator(method, url, queryKey) {
             {/*Indice de pagina*/}
             <div class="dx-pages">
                 <div class="dx-page-indexes">
-                    <Pagination 
+                    <ReactPaginate 
                         defaultSelectedIndex = {page-1}
-                        pages={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} 
-                        onChange= {(_, page, _x) => setPage(page)}
+                        pageCount={5} 
+                        onPageChange={({selected}) => setPage(selected + 1)}
                     />
                 </div>
             </div>
