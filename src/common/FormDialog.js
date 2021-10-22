@@ -32,7 +32,7 @@ const FormDialog = ({title, callback, children, data = {}}) => {
                 />
             </div>
 
-            <div className="modal-header xtreme">
+            <div className="modal-header">
                 <h5 className="modal-title">{title}</h5>
                 <Button
                     icon="close"
