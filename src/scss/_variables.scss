@@ -1,6 +1,6 @@
 // Variable overrides
 //$sidebar-brand-height:  4rem;
-$sidebar-dark-brand-bg: #0875fa;
+$sidebar-dark-brand-bg: #2962ff;
 $sidebar-width: 220px;
 
 $sidebar-dark-bg:                          #ffffff; 
@@ -30,6 +30,9 @@ $header-light-color: #ffffff;
 $header-light-hover-color: #e7e5e5;
 
 $header-light-bg: linear-gradient(-45deg, #3949ab, #2962ff);
+
+$sidebar-nav-link-padding-y: .7rem;
+
 //Prime
 *:root{
     --primary-color: #006df0;

@@ -24,7 +24,7 @@ import {
 
 import CIcon from '@coreui/icons-react'
 
-import MainChartExample from '../../views/charts/MainChartExample.js'
+import MainChartExample from '../charts/MainChartExample.js'
 import { Carousel } from 'primereact/carousel';
 
 const stat = [
