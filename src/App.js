@@ -1,6 +1,7 @@
 import React from 'react';
-import { useIsAuthenticated, useAuthHeader } from 'react-auth-kit';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+
+import useHeaderJwt from './services/hooks/useHeaderJwt';
 import Loading from './views/widget/Loading';
 import Expired from './views/auth/Expired';
 
@@ -11,17 +12,15 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import './scss/style.scss';
-import useHeaderJwt from './services/hooks/useHeaderJwt';
 
 const TheLayout = React.lazy(() => import('./components/layouts/containers/TheLayout'))
 const Auth = React.lazy(() => import('./views/auth/Auth'));
 
 const App = () => {
-    const isAuthenticated = useIsAuthenticated();  
-    const {exp: expiresIn} = useHeaderJwt();
+    const {isAuthenticated, exp: expiresIn} = useHeaderJwt();
 
-    if(isAuthenticated()){
-        if (expiresIn * 1000  < Date.now()) (<Expired/>)
+    if(isAuthenticated && expiresIn * 1000  < Date.now()){
+        return<Expired/>
     }
           
     return (
@@ -29,15 +28,15 @@ const App = () => {
             <React.Suspense fallback={<Loading className="vh-100"/>}>
                 <Switch>
                     <Route exact path="/login" name="Ingresar">
-                      {isAuthenticated() ? <TheLayout /> : <Auth/> }
+                      {isAuthenticated ? <TheLayout /> : <Auth/> }
                     </Route>
                     
                     <Route exact path="/sign-up" name="Registrase">
-                      {isAuthenticated() ? <TheLayout /> : <Auth/> }
+                      {isAuthenticated ? <TheLayout /> : <Auth/> }
                     </Route>
                     
                     <Route path="/" name="Inicio">
-                      {isAuthenticated() ? <TheLayout /> : <Redirect to="/login" /> }
+                      {isAuthenticated ? <TheLayout /> : <Redirect to="/login" /> }
                     </Route>
                 </Switch>
             </React.Suspense>

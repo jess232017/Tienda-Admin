@@ -16,19 +16,23 @@ const Caja = React.lazy(() => import('./views/admin/cajas/Caja'));
 
 const routes = [
     { path: '/', exact: true, name: 'Home' },
-    { path: '/dashboard', name: 'Dashboard', component: Dashboard, roles: [ROLES.administrador, ROLES.vendedor] },
-    { path: '/admin/venta', exact: true, name: 'Ventas', component: Ventas },
-    { path: '/admin/venta/nueva', name: 'Tomar Venta', component: TomarVenta },
-    { path: '/admin/venta/detalle', name: 'Detalle Venta', component: DetalleVenta },
-    { path: '/admin/producto', name: 'Producto', component: Producto },
-    { path: '/admin/categoria', name: 'Categoria', component: Categoria },
-    { path: '/admin/movimiento', name: 'Movimiento', component: Movimiento },
-    { path: '/admin/inventario', name: 'Inventario', component: Inventario },
-    { path: '/admin/producto', name: 'Producto', component: Producto },
-    { path: '/admin/caja', name: 'Caja', component: Caja },
-    { path: '/admin/cliente', name: 'Cliente', component: Cliente },
-    { path: '/admin/proveedor', name: 'Proveedor', component: Proveedor },
-    { path: '/admin/empleado', name: 'Empleado', component: Empleado },
+    {   path: '/dashboard', name: 'Dashboard', component: Dashboard, 
+        roles: [ROLES.administrador] 
+    },
+    {   path: '/admin/venta', exact: true, name: 'Ventas', component: Ventas },
+    {   path: '/admin/venta/nueva', name: 'Tomar Venta', component: TomarVenta },
+    {   path: '/admin/venta/detalle', name: 'Detalle Venta', component: DetalleVenta },
+    {   path: '/admin/producto', name: 'Producto', component: Producto },
+    {   path: '/admin/categoria', name: 'Categoria', component: Categoria },
+    {   path: '/admin/movimiento', name: 'Movimiento', component: Movimiento },
+    {   path: '/admin/inventario', name: 'Inventario', component: Inventario },
+    {   path: '/admin/producto', name: 'Producto', component: Producto },
+    {   path: '/admin/caja', name: 'Caja', component: Caja },
+    {   path: '/admin/cliente', name: 'Cliente', component: Cliente },
+    {   path: '/admin/proveedor', name: 'Proveedor', component: Proveedor },
+    {   path: '/admin/empleado', name: 'Empleado', component: Empleado,
+        roles: [ROLES.administrador]
+    },
 ];
 
 export default routes;

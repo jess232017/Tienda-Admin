@@ -26,6 +26,7 @@ import CIcon from '@coreui/icons-react'
 
 import MainChartExample from '../charts/MainChartExample.js'
 import { Carousel } from 'primereact/carousel';
+import { Avatar } from 'primereact/avatar'
 
 const stat = [
   {
@@ -100,12 +101,18 @@ const responsiveOptions = [
 const Dashboard = () => {
   
   const widgetTemplate = ({nombre, valor, color, icon}) => {
-    return (
-      <CWidgetIcon className="mr-2"
-        text={nombre} header={valor} color={color} iconPadding={false}>
-          <CIcon width={24} name={icon}/>
-      </CWidgetIcon>
-    );
+      return(
+          <div className="card card-body">
+              <article className="d-inline-flex">
+                  <span class={`icon icon-sm rounded-circle ${color}`}>
+                      <i class={`text-success ${icon}`}></i>
+                  </span>
+                  <div className="text">
+                      <h6 className="mb-1">{nombre}</h6>  <span>{valor}</span>
+                  </div>
+              </article> 
+          </div>
+      );
   }
 
   return (

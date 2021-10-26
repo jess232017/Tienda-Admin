@@ -4,8 +4,7 @@ export const ROLES = {
     bodeguero: "Bodeguero",
     vendedor: "Vendedor",
     cliente: "Cliente",
-    cajero: "Cajero",
-    any: "Any"
+    cajero: "Cajero"
 }
 
 //

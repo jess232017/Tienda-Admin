@@ -1,9 +1,18 @@
-import {useAuthHeader} from 'react-auth-kit'
+import {useAuthHeader, useIsAuthenticated} from 'react-auth-kit'
 
 const useHeaderJwt = () => {
+    const isAuthenticated = useIsAuthenticated();
     const authHeader = useAuthHeader();
-    const decodedJwtJsonData = window.atob(authHeader().split('.')[1]);
-    return JSON.parse(decodedJwtJsonData);
+    let decodedJwtJsonData = {
+        isAuthenticated : false
+    };
+
+    if(isAuthenticated()){
+        decodedJwtJsonData = JSON.parse(window.atob(authHeader().split('.')[1]));
+        decodedJwtJsonData.isAuthenticated = true;
+    }
+    
+    return decodedJwtJsonData;
 }
  
 export default useHeaderJwt;
